@@ -11,33 +11,24 @@
     </div>
   </div>
 
-  <div>
-    <img src ="./assets/room0.jpg">
-    <h4>{{ products[0]}}</h4>
-    <p>40 만원</p>
-    <button v-on:click ="counts[0] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[0] }} </span>
-  </div>
-    <div>
-    <img src ="./assets/room1.jpg">
-    <h4>{{ products[1] }}</h4>
-    <p>70 만원</p>
-     <button v-on:click ="counts[1] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[1] }} </span>
-  </div>
   <button @click="modal = true">Open Modal</button>
-  <div>
-    <img src ="./assets/room2.jpg">
-    <h4>{{ products[1] }}</h4>
-    <p>70 만원</p>
-     <button v-on:click ="counts[2] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[2] }} </span>
+ 
+  <div v-for="i in 5" :key="i">
+      <img :src ="onerooms[i].image">
+    <h4>{{ onerooms[i].title }}</h4>
+    <p>{{ onerooms[i].price }}</p>
   </div>
 </template>
 
 <script>  
 
+import data from "./oneroom";
+
 export default {
   name: 'App',
   data(){
     return {
+        onerooms: data,
         modal : false,
         counts : [0, 0, 0], 
         menus: ['Home', 'Shop', 'About'],
@@ -46,9 +37,7 @@ export default {
   },
 
   methods : {
-    increase () {
-      this.count += 1; 
-    }
+ 
   },
 
   components: {
