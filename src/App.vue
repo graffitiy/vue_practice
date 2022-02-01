@@ -3,18 +3,29 @@
   <div class="menu">
     <a v-for="a in menus" :key="a">{{ a }}</a>
   </div>
+
+  <div class="black-bg" v-if=" modal === true">
+    <div class="white-bg">
+      <h4>Detail Page</h4>
+      <button @click="modal = false">close</button>
+    </div>
+  </div>
+
   <div>
-    {{ logo }}
-    <h4 class="blue" :style="스타일">{{ products[0]}}</h4>
+    <img src ="./assets/room0.jpg">
+    <h4>{{ products[0]}}</h4>
     <p>40 만원</p>
     <button v-on:click ="counts[0] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[0] }} </span>
   </div>
     <div>
+    <img src ="./assets/room1.jpg">
     <h4>{{ products[1] }}</h4>
     <p>70 만원</p>
      <button v-on:click ="counts[1] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[1] }} </span>
   </div>
-      <div>
+  <button @click="modal = true">Open Modal</button>
+  <div>
+    <img src ="./assets/room2.jpg">
     <h4>{{ products[1] }}</h4>
     <p>70 만원</p>
      <button v-on:click ="counts[2] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[2] }} </span>
@@ -27,10 +38,10 @@ export default {
   name: 'App',
   data(){
     return {
+        modal : false,
         counts : [0, 0, 0], 
         menus: ['Home', 'Shop', 'About'],
-        products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
-        스타일 : 'color : blue',
+        products : ['역삼동원룸', '천호동원룸', '마포구원룸'], 
       }
   },
 
@@ -46,6 +57,30 @@ export default {
 </script>
 
 <style>
+
+body{
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.black-bg {
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  padding: 20px;
+}
+
+.white-bg {
+  width: 100%;  
+  background: white;
+  padding: 20px;
+}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
