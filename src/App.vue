@@ -7,14 +7,17 @@
     {{ logo }}
     <h4 class="blue" :style="스타일">{{ products[0]}}</h4>
     <p>40 만원</p>
+    <button v-on:click ="counts[0] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[0] }} </span>
   </div>
     <div>
     <h4>{{ products[1] }}</h4>
     <p>70 만원</p>
+     <button v-on:click ="counts[1] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[1] }} </span>
   </div>
       <div>
     <h4>{{ products[1] }}</h4>
     <p>70 만원</p>
+     <button v-on:click ="counts[2] += 1">허위매물신고</button> <span> 신고 수 : {{ counts[2] }} </span>
   </div>
 </template>
 
@@ -24,11 +27,19 @@ export default {
   name: 'App',
   data(){
     return {
+        counts : [0, 0, 0], 
         menus: ['Home', 'Shop', 'About'],
         products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
         스타일 : 'color : blue',
       }
   },
+
+  methods : {
+    increase () {
+      this.count += 1; 
+    }
+  },
+
   components: {
   }
 }
